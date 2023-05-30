@@ -1,11 +1,13 @@
-import { Typography, Card, CardBody } from '@material-tailwind/react'
+import { Typography, Card, CardBody, ButtonGroup, Button } from '@material-tailwind/react'
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteBook } from './booksSlice'
+import { Link } from 'react-router-dom';
+
 // id: 1,
 //     title: 'The Hunger Games',
 //         author: 'Suzanne Collins'
-const TABLE_HEAD = ["Id", "Title", "Author", "Actions"];
+const TABLE_HEAD = ["Sl", "Title", "Author", "Actions"];
 
 export default function BooksView() {
 
@@ -62,7 +64,7 @@ export default function BooksView() {
                                             <tr key={id}>
                                                 <td className={classes}>
                                                     <Typography variant="small" color="blue-gray" className="font-normal">
-                                                        {id}
+                                                        {index + 1}
                                                     </Typography>
                                                 </td>
                                                 <td className={classes}>
@@ -76,12 +78,14 @@ export default function BooksView() {
                                                     </Typography>
                                                 </td>
                                                 <td className={classes}>
-                                                    <Typography as="a" href="#" variant="small" color="blue" className="font-medium">
-                                                        Edit
-                                                    </Typography>
-                                                    <Typography as="a" href="#" variant="small" color="blue" className="font-medium" onClick={() => handleDeleteBook(id)}>
-                                                        Delete
-                                                    </Typography>
+                                                    <div className="flex w-max items-end gap-4">
+                                                        <Button color="blue" size="sm">
+                                                            <Link to={`/edit-book/${id}`}>Edit</Link>
+                                                        </Button>
+                                                        <Button color="red" size="sm" onClick={() => handleDeleteBook(id)}>
+                                                            Delete
+                                                        </Button>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         );

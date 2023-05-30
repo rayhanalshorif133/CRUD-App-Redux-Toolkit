@@ -10,7 +10,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { addBook } from './booksSlice';
 import { useNavigate } from 'react-router-dom';
-
+import { v4 as uuidv4 } from 'uuid';
 export default function AddBook() {
 
 
@@ -20,7 +20,7 @@ export default function AddBook() {
 
 
     const [book, setBook] = React.useState({
-        id: lengthOfBooks + 1,
+        id: uuidv4(),
         title: '',
         author: '',
     });
