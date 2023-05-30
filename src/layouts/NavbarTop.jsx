@@ -65,7 +65,9 @@ export default function NavbarTop() {
                     </Typography>
                     <div className="hidden lg:block">{navList}</div>
                     <Button variant="gradient" size="sm" className="hidden lg:inline-block">
-                        <span>Buy Now</span>
+                        <span>
+                            <a href='https://react-redux.js.org/' target='_blank' rel="noreferrer">React Redux</a>
+                        </span>
                     </Button>
                     <IconButton
                         variant="text"

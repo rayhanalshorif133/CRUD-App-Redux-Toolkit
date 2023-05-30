@@ -18,11 +18,17 @@ const initialBooks = {
 export const booksSlice = createSlice({
     name: 'books',
     initialState: initialBooks,
-    reducer: {
+    reducers: {
         showBooks: (state) => state,
+        addBook: (state, action) => {
+            state.books.push(action.payload);
+        },
+        deleteBook: (state, action) => {
+            state.books = state.books.filter(({ id }) => id !== action.payload);
+        }
     }
 });
 
-export const { showBooks } = booksSlice.actions;
+export const { showBooks, addBook, deleteBook } = booksSlice.actions;
 
 export default booksSlice.reducer;

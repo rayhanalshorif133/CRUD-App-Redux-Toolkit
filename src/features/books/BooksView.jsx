@@ -1,7 +1,7 @@
 import { Typography, Card, CardBody } from '@material-tailwind/react'
 import React from 'react'
-import { useSelector } from 'react-redux'
-
+import { useSelector, useDispatch } from 'react-redux'
+import { deleteBook } from './booksSlice'
 // id: 1,
 //     title: 'The Hunger Games',
 //         author: 'Suzanne Collins'
@@ -12,6 +12,12 @@ export default function BooksView() {
     const books = useSelector(
         (state) => state.booksReducer.books
     );
+    const dispatch = useDispatch();
+
+
+    const handleDeleteBook = (id) => {
+        dispatch(deleteBook(id));
+    };
 
 
     return (
@@ -72,6 +78,9 @@ export default function BooksView() {
                                                 <td className={classes}>
                                                     <Typography as="a" href="#" variant="small" color="blue" className="font-medium">
                                                         Edit
+                                                    </Typography>
+                                                    <Typography as="a" href="#" variant="small" color="blue" className="font-medium" onClick={() => handleDeleteBook(id)}>
+                                                        Delete
                                                     </Typography>
                                                 </td>
                                             </tr>
