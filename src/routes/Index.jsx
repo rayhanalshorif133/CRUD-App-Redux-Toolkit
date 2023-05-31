@@ -5,7 +5,7 @@ import BaseLayout from './../layouts/BaseLayout';
 
 export default function Index() {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename='/CRUD-Using-Redux-Toolkit'>
             <NavbarTop />
             <BaseLayout />
         </BrowserRouter>
